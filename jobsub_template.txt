@@ -1,0 +1,21 @@
+####### JSON TEMPLATE FOR JOB SUBMISSIONS #######
+
+
+#ARRAY - CAN SUBMIT MULTIPLE JOBS IN ONE JSON
+[
+    {
+      "Project": <string>, #REQUIRED
+      "OS": <string>, #REQUIRED
+      "Command": <string>, #REQUIRED
+      "Queue": <string>, #REQUIRED - MUST BE ONE FROM LIST: ["CP", "Foreground", "MP", "Nexus", "PD", "PIPD", "R&D", "CPG", "IOT", "MPG-1", "MPG-3", "PEG", "SSG-1", "SSG-2", "SSG-3", "SSG-4", "TSG-2", "TSG-3", "SDD", "SE"]
+      "CPU Request": <integer>, #REQUIRED
+      "Memory Request": <number>, #REQUIRED
+      "Runtime Limit": <integer>, #NOT REQUIRED
+      "Dependencies": [ #NOT REQUIRED - BUT IF INCLUDED, ALL PROPERTIES (JOB & STATUS) ARE REQUIRED
+        {
+          "Job": <string>,
+          "Status": <string> #MUST BE ONE FROM LIST: ["completed_any","completed_success","completed_exit","completed_runfail","active","stalled"]
+        }
+      ]
+    }
+]

@@ -1,0 +1,35 @@
+[
+    {
+      "Project": "PJ02134",
+      "OS": "rhe6",
+      "Command": "go run scheduler.go",
+      "Queue": "PD",
+      "CPU Request": 1,
+      "Memory Request": 2000.0,
+      "Runtime Limit": 21600,
+      "Dependencies": [
+        {
+          "Job": "go run main.go",
+          "Status": "completed_any"
+        },
+        {
+          "Job": "go run data.go",
+          "Status": "active"
+        }
+      ]
+    },
+    {
+      "Project": "PJ02134",
+      "OS": "rhe6",
+      "Command": "go run scheduler_backup.go",
+      "Queue": "Nexus",
+      "CPU Request": 8,
+      "Memory Request": 4500,
+      "Dependencies": [
+        {
+          "Job": "go run scheduler.go",
+          "Status": "completed_runfail"
+        }
+      ]
+    }
+  ]

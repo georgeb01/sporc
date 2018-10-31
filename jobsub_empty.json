@@ -1,0 +1,21 @@
+[
+    {
+      "Project": "",
+      "OS": "",
+      "Command": "",
+      "Queue": "",
+      "CPU Request": 1,
+      "Memory Request": 0.0,
+      "Runtime Limit": 1,
+      "Dependencies": [
+        {
+          "Job": "",
+          "Status": ""
+        },
+        {
+          "Job": "",
+          "Status": ""
+        }
+      ]
+    }
+  ]

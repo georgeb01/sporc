@@ -1,0 +1,69 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "http://example.com/jobsub_schema.json",
+    "title": "Job Submission",
+    "description": "Format for all jobs submitted to cluster",
+    "type":"array",
+    "items": {
+        "type": "object",
+        "properties": {
+            "Project": {
+                "description": "Project ID",
+                "type": "string"
+            },
+            "OS": {
+                "description": "Operating System",
+                "type": "string"
+            },
+            "Command": {
+                "description": "Job Command",
+                "type": "string"
+            },
+            "Queue":{
+                "description": "Queue for Job to run in",
+                "type":"string",
+                "enum": [
+                    "CP", "Foreground", "MP", "Nexus", "PD", "PIPD", "R&D", "CPG", "IOT", "MPG-1", "MPG-3", "PEG", "SSG-1", "SSG-2", "SSG-3", "SSG-4", "TSG-2", "TSG-3", "SDD", "SE"
+                ]
+            },
+            "CPU Request": {
+            "description": "The number of CPUs requested",
+            "type": "integer",
+            "minimum": 1
+            },
+            "Memory Request": {
+                "description": "The amount of memory requested in MB (soft limit)",
+                "type": "number",
+                "minimum": 0.0
+            },
+            "Runtime Limit": {
+                "description": "Maximum allowed time for job to run before it is killed (seconds)",
+                "type": "integer",
+                "minimum": 1
+            },
+            "Dependencies": {
+                "description": "List of job dependencies",
+                "type":"array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "Job": {
+                            "description": "Job that submission is dependent on",
+                            "type": "string"
+                        },
+                        "Status": {
+                            "description": "The required status of the job that the submission is dependent on",
+                            "type":"string",
+                            "enum": [
+                                "completed_any","completed_success","completed_exit","completed_runfail","active","stalled"
+                            ]
+                        }
+                    }
+                },
+                "required": ["Job","Status"],
+                "minItems":1
+            }
+        },
+        "required": [ "Project","OS","Command","Queue","CPU Request","Memory Request"]
+    }
+}
